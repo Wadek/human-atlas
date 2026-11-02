@@ -1,0 +1,19 @@
+name: human-atlas
+
+# Sibling app under D:\wakalabs.
+# Joins external docker network waka-net for gateway routing.
+# Bind loopback only.
+
+services:
+  human-atlas:
+    build: .
+    container_name: human-atlas
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8795:8080"
+    networks:
+      - waka-net
+
+networks:
+  waka-net:
+    external: true
